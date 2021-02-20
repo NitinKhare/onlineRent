@@ -4,14 +4,14 @@ let validator = require('validator')
 let User = require('../models/users');
 
 
-function checkUserExists(email){
+async function checkUserExists(email){
     if(!validator.isEmail(email)) throw new Error('Invalid Email')
     let user = await User.find({email})
     if(!user) return false;
     return user
 }
 
-router.post('/login',(req, res)=>{
+router.post('/login',async (req, res)=>{
     try{
         if(!req.body.email || !req.body.password) throw new Error("Invalid Details")
         let user = await checkUserExists(email)

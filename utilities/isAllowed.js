@@ -1,5 +1,5 @@
 var User = require('../models/users');
-module.exports.isAllowed = function(req, res, next){
+module.exports.isAllowed = async function(req, res, next){
     try{
         if(!req.headers || !req.headers.Authorization) throw new Error("Unauthorized user")
         let decryptJWT = require('../utilities/jwt').verifyAuthToken(req.headers.Authorization)
