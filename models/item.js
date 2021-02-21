@@ -8,6 +8,8 @@ var ProductSchema = mongoose.Schema({
     rent_price: { type: Number,required: true },
     compare_price: { type: Number },
     manufacture_date:{ type:String },
+    seller:{type: mongoose.Schema.Types.ObjectId, ref: "User"},
+    rented_by:{type: mongoose.Schema.Types.ObjectId, ref: "User"},
     inventory_management: { type: String, enum: ['rented', 'available'], default: 'available', required: true },
 
 },{timestamps:true});
